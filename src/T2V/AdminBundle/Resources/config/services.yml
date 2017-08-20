@@ -1,0 +1,4 @@
+services:
+#    t2_v_admin.example:
+#        class: T2V\AdminBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

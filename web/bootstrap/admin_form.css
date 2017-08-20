@@ -1,0 +1,60 @@
+.flash-success{
+	display: block;
+	color: #5CB85C;
+	text-align: center;
+}
+
+.fos_user_profile_edit, .fos_user_change_password, .fos_user_resetting_request {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.fos_user_profile_edit label, .fos_user_change_password label, .fos_user_resetting_request label{
+	display: block;
+	text-align: center;
+}
+
+.fos_user_profile_edit .form-control, .fos_user_change_password .form-control, .fos_user_resetting_request .form-control{
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.fos_user_profile_edit input[type="email"], 
+.fos_user_profile_edit input[type="password"], 
+.fos_user_profile_edit input[type="text"],
+
+.fos_user_change_password input[type="email"], 
+.fos_user_change_password input[type="password"], 
+.fos_user_change_password input[type="text"],
+
+.fos_user_resetting_request input[type="email"], 
+.fos_user_resetting_request input[type="password"], 
+.fos_user_resetting_request input[type="text"] {
+	display: inline-block;
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+	font-size: 14px;
+	color: #748187;
+	border: solid 1px #999;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.fos_user_profile_edit ul li,
+.fos_user_change_password ul li,
+.fos_user_resetting_request ul li {
+	display: block;
+	color: #D9534F;
+	text-align: center;
+}
+
+div p{
+	text-align: center;
+}

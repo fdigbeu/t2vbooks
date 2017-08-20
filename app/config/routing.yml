@@ -1,0 +1,12 @@
+t2_v_admin:
+    resource: "@T2VAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin/
+
+t2_v_front:
+    resource: "@T2VFrontBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+
