@@ -1,0 +1,24 @@
+detaillivre_index:
+    path:     /
+    defaults: { _controller: "T2VAdminBundle:DetailLivre:index" }
+    methods:  GET
+
+detaillivre_show:
+    path:     /{id}/show
+    defaults: { _controller: "T2VAdminBundle:DetailLivre:show" }
+    methods:  GET
+
+detaillivre_new:
+    path:     /new
+    defaults: { _controller: "T2VAdminBundle:DetailLivre:new" }
+    methods:  [GET, POST]
+
+detaillivre_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "T2VAdminBundle:DetailLivre:edit" }
+    methods:  [GET, POST]
+
+detaillivre_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "T2VAdminBundle:DetailLivre:delete" }
+    methods:  DELETE
