@@ -1,3 +1,19 @@
+t2_v_admin_categorie:
+    resource: "@T2VAdminBundle/Resources/config/routing/categorie.yml"
+    prefix:   /categorie
+
+t2_v_admin_detaillivre:
+    resource: "@T2VAdminBundle/Resources/config/routing/detaillivre.yml"
+    prefix:   /detaillivre
+
+t2_v_admin_livre:
+    resource: "@T2VAdminBundle/Resources/config/routing/livre.yml"
+    prefix:   /livre
+
+t2_v_admin_souscategorie:
+    resource: "@T2VAdminBundle/Resources/config/routing/souscategorie.yml"
+    prefix:   /souscategorie
+
 t2_v_admin_homepage:
     path:     /
     defaults: { _controller: T2VAdminBundle:Default:index }
