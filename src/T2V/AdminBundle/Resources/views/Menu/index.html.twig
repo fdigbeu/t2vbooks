@@ -11,18 +11,35 @@
               </div>
               <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#about">About</a></li>
-                  <li><a href="#contact">Contact</a></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sommaire <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Afficher tous les titres</a></li>
+                      <li><a href="#">Ajouter un nouveau titre</a></li>
+                      <li role="separator" class="divider"></li>
+                      <li><a href="#">Afficher tous les sous-titres</a></li>
+                      <li><a href="#">Ajouter un nouveau sous-titre</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Détail du livre <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Afficher tous les titres</a></li>
+                      <li><a href="#">Ajouter un nouveau titre</a></li>
+                      <li role="separator" class="divider"></li>
+                      <li><a href="#">Afficher tous les contenus</a></li>
+                      <li><a href="#">Ajouter un nouveau contenu</a></li>
+                    </ul>
+                  </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                  <li class="dropdown">
+                  <li class="dropdown {% if active starts with 'fos_user_' %}active{% endif %}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="{{ path('fos_user_profile_show') }}">Afficher son profil</a></li>
-                      <li><a href="{{ path('fos_user_profile_edit') }}">Modifier son profil</a></li>
-                      <li><a href="{{ path('fos_user_change_password') }}">Modifier son mot de passe</a></li>
-                      <li><a href="{{ path('fos_user_resetting_check_email') }}">Réinitialiser son mot de passe</a></li>
+                      <li class="{% if active == 'fos_user_profile_show' %}active{% endif %}"><a href="{{ path('fos_user_profile_show') }}">Afficher son profil</a></li>
+                      <li class="{% if active == 'fos_user_profile_edit' %}active{% endif %}"><a href="{{ path('fos_user_profile_edit') }}">Modifier son profil</a></li>
+                      <li class="{% if active == 'fos_user_change_password' %}active{% endif %}"><a href="{{ path('fos_user_change_password') }}">Modifier son mot de passe</a></li>
+                      <li class="{% if active == 'fos_user_resetting_request' %}active{% endif %}"><a href="{{ path('fos_user_resetting_check_email') }}">Réinitialiser son mot de passe</a></li>
                       <li role="separator" class="divider"></li>
                       <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
                     </ul>
