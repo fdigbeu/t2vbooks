@@ -4,6 +4,8 @@ namespace T2V\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * SousCategorie
  *
@@ -27,6 +29,22 @@ class SousCategorie
      * @ORM\Column(name="titre", type="string", length=510)
      */
     private $titre;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="T2V\AdminBundle\Entity\DetailLivre", mappedBy="souscategorie")
+     */
+    private $detaillivres;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="T2V\AdminBundle\Entity\Categorie", inversedBy="souscategories", cascade={"persist"})
+     * @ORM\JoinColumn(name="categorie_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $categorie;
+    
+    public function __construct()
+    {
+    	$this->detaillivres = new ArrayCollection();
+    }
 
 
     /**
@@ -62,5 +80,62 @@ class SousCategorie
     {
         return $this->titre;
     }
-}
 
+    /**
+     * Add detaillivre
+     *
+     * @param \T2V\AdminBundle\Entity\DetailLivre $detaillivre
+     *
+     * @return SousCategorie
+     */
+    public function addDetaillivre(\T2V\AdminBundle\Entity\DetailLivre $detaillivre)
+    {
+        $this->detaillivres[] = $detaillivre;
+
+        return $this;
+    }
+
+    /**
+     * Remove detaillivre
+     *
+     * @param \T2V\AdminBundle\Entity\DetailLivre $detaillivre
+     */
+    public function removeDetaillivre(\T2V\AdminBundle\Entity\DetailLivre $detaillivre)
+    {
+        $this->detaillivres->removeElement($detaillivre);
+    }
+
+    /**
+     * Get detaillivres
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDetaillivres()
+    {
+        return $this->detaillivres;
+    }
+
+    /**
+     * Set categorie
+     *
+     * @param \T2V\AdminBundle\Entity\Categorie $categorie
+     *
+     * @return SousCategorie
+     */
+    public function setCategorie(\T2V\AdminBundle\Entity\Categorie $categorie = null)
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * Get categorie
+     *
+     * @return \T2V\AdminBundle\Entity\Categorie
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+}

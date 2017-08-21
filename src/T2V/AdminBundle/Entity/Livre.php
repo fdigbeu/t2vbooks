@@ -4,6 +4,8 @@ namespace T2V\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Livre
  *
@@ -27,6 +29,16 @@ class Livre
      * @ORM\Column(name="titre", type="string", length=510)
      */
     private $titre;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="T2V\AdminBundle\Entity\Categorie", mappedBy="livre")
+     */
+    private $categories;
+    
+    public function __construct()
+    {
+    	$this->categories = new ArrayCollection();
+    }
 
 
     /**
@@ -62,5 +74,38 @@ class Livre
     {
         return $this->titre;
     }
-}
 
+    /**
+     * Add category
+     *
+     * @param \T2V\AdminBundle\Entity\Categorie $category
+     *
+     * @return Livre
+     */
+    public function addCategory(\T2V\AdminBundle\Entity\Categorie $category)
+    {
+        $this->categories[] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Remove category
+     *
+     * @param \T2V\AdminBundle\Entity\Categorie $category
+     */
+    public function removeCategory(\T2V\AdminBundle\Entity\Categorie $category)
+    {
+        $this->categories->removeElement($category);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+}

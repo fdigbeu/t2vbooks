@@ -28,6 +28,18 @@ class DetailLivre
      */
     private $contenu;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="T2V\AdminBundle\Entity\Categorie", inversedBy="detaillivres", cascade={"persist"})
+     * @ORM\JoinColumn(name="categorie_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $categorie;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="T2V\AdminBundle\Entity\SousCategorie", inversedBy="detaillivres", cascade={"persist"})
+     * @ORM\JoinColumn(name="souscategorie_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $souscategorie;
+
 
     /**
      * Get id
@@ -62,5 +74,52 @@ class DetailLivre
     {
         return $this->contenu;
     }
-}
 
+    /**
+     * Set categorie
+     *
+     * @param \T2V\AdminBundle\Entity\Categorie $categorie
+     *
+     * @return DetailLivre
+     */
+    public function setCategorie(\T2V\AdminBundle\Entity\Categorie $categorie = null)
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * Get categorie
+     *
+     * @return \T2V\AdminBundle\Entity\Categorie
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+
+    /**
+     * Set souscategorie
+     *
+     * @param \T2V\AdminBundle\Entity\SousCategorie $souscategorie
+     *
+     * @return DetailLivre
+     */
+    public function setSouscategorie(\T2V\AdminBundle\Entity\SousCategorie $souscategorie = null)
+    {
+        $this->souscategorie = $souscategorie;
+
+        return $this;
+    }
+
+    /**
+     * Get souscategorie
+     *
+     * @return \T2V\AdminBundle\Entity\SousCategorie
+     */
+    public function getSouscategorie()
+    {
+        return $this->souscategorie;
+    }
+}
