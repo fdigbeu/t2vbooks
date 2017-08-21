@@ -3,7 +3,7 @@
 {% block body %}
         <div>
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            	{% include 'menu.html.twig' %}
+                {{ render(controller('T2VAdminBundle:Menu:index', {'active': app.request.get('_route')})) }}
             {% else %}
                 <a style="display: none;" href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
             {% endif %}
