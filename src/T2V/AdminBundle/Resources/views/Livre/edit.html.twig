@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<div>{{ render(controller('T2VAdminBundle:Menu:index', {'active': app.request.get('_route')})) }}</div>
+	
+	<div class="container">
+
+    <div class="page-header">
+    	<h3 class="text-center">Modifier le titre d'un livre</h3>
+    </div>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <input type="submit" value="Edit" />
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('livre_index') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+    
+    </div>
+{% endblock %}

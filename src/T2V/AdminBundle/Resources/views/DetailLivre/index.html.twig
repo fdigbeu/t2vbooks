@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<div>{{ render(controller('T2VAdminBundle:Menu:index', {'active': app.request.get('_route')})) }}</div>
+	
+	<div class="container">
+
+    <div class="page-header">
+    	<h3 class="text-center">Afficher les contenus d'un livre</h3>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Contenu</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for detailLivre in detailLivres %}
+            <tr>
+                <td><a href="{{ path('detaillivre_show', { 'id': detailLivre.id }) }}">{{ detailLivre.id }}</a></td>
+                <td>{{ detailLivre.contenu }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('detaillivre_show', { 'id': detailLivre.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('detaillivre_edit', { 'id': detailLivre.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('detaillivre_new') }}">Create a new detailLivre</a>
+        </li>
+    </ul>
+    
+    </div>
+{% endblock %}

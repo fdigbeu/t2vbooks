@@ -11,24 +11,24 @@
               </div>
               <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                  <li class="dropdown">
+                  <li class="dropdown {% if active starts with 'categorie_' or active starts with 'souscategorie_' %}active{% endif %}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sommaire <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="#">Afficher tous les titres</a></li>
-                      <li><a href="#">Ajouter un nouveau titre</a></li>
+                      <li class="{% if active == 'categorie_index' %}active{% endif %}"><a href="{{ path('categorie_index') }}">Afficher tous les titres</a></li>
+                      <li class="{% if active == 'categorie_new' %}active{% endif %}"><a href="{{ path('categorie_new') }}">Ajouter un nouveau titre</a></li>
                       <li role="separator" class="divider"></li>
-                      <li><a href="#">Afficher tous les sous-titres</a></li>
-                      <li><a href="#">Ajouter un nouveau sous-titre</a></li>
+                      <li class="{% if active == 'souscategorie_index' %}active{% endif %}"><a href="{{ path('souscategorie_index') }}">Afficher tous les sous-titres</a></li>
+                      <li class="{% if active == 'souscategorie_new' %}active{% endif %}"><a href="{{ path('souscategorie_new') }}">Ajouter un nouveau sous-titre</a></li>
                     </ul>
                   </li>
-                  <li class="dropdown">
+                  <li class="dropdown {% if active starts with 'livre_' or active starts with 'detaillivre_' %}active{% endif %}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Détail du livre <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="#">Afficher tous les titres</a></li>
-                      <li><a href="#">Ajouter un nouveau titre</a></li>
+                      <li class="{% if active == 'livre_index' %}active{% endif %}"><a href="{{ path('livre_index') }}">Afficher tous les titres</a></li>
+                      <li class="{% if active == 'livre_new' %}active{% endif %}"><a href="{{ path('livre_new') }}">Ajouter un nouveau titre</a></li>
                       <li role="separator" class="divider"></li>
-                      <li><a href="#">Afficher tous les contenus</a></li>
-                      <li><a href="#">Ajouter un nouveau contenu</a></li>
+                      <li class="{% if active == 'detaillivre_index' %}active{% endif %}"><a href="{{ path('detaillivre_index') }}">Afficher tous les contenus</a></li>
+                      <li class="{% if active == 'detaillivre_new' %}active{% endif %}"><a href="{{ path('detaillivre_new') }}">Ajouter un nouveau contenu</a></li>
                     </ul>
                   </li>
                 </ul>

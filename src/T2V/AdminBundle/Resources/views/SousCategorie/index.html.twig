@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<div>{{ render(controller('T2VAdminBundle:Menu:index', {'active': app.request.get('_route')})) }}</div>
+	
+	<div class="container">
+
+    <div class="page-header">
+    	<h3 class="text-center">Afficher tous les sous-titres</h3>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sousCategorie in sousCategories %}
+            <tr>
+                <td><a href="{{ path('souscategorie_show', { 'id': sousCategorie.id }) }}">{{ sousCategorie.id }}</a></td>
+                <td>{{ sousCategorie.titre }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('souscategorie_show', { 'id': sousCategorie.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('souscategorie_edit', { 'id': sousCategorie.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('souscategorie_new') }}">Create a new sousCategorie</a>
+        </li>
+    </ul>
+    
+    </div>
+{% endblock %}
