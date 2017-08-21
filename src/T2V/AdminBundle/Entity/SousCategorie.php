@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * SousCategorie
  *
- * @ORM\Table(name="sous_categorie")
+ * @ORM\Table(name="t2v_sous_categorie")
  * @ORM\Entity(repositoryClass="T2V\AdminBundle\Repository\SousCategorieRepository")
  */
 class SousCategorie
