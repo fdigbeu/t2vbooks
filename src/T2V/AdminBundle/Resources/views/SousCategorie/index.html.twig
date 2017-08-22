@@ -10,37 +10,33 @@
     	<h3 class="text-center">Afficher tous les sous-titres</h3>
     </div>
 
-    <table>
+    <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Titre</th>
+                <th>Titre du sommaire</th>
+                <th>Numéro</th>
+                <th>Sous-Titre du sommaire</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for sousCategorie in sousCategories %}
             <tr>
-                <td><a href="{{ path('souscategorie_show', { 'id': sousCategorie.id }) }}">{{ sousCategorie.id }}</a></td>
+                <td>{{ sousCategorie.categorie.titre }}</td>
+                <td>{{ sousCategorie.numero }}</td>
                 <td>{{ sousCategorie.titre }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('souscategorie_show', { 'id': sousCategorie.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('souscategorie_edit', { 'id': sousCategorie.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <a class="btn btn-info btn-xs" href="{{ path('souscategorie_show', { 'id': sousCategorie.id }) }}">Afficher</a>
+                    <a class="btn btn-primary btn-xs" href="{{ path('souscategorie_edit', { 'id': sousCategorie.id }) }}">Modifier</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
+    <ul class="t2v_adminbundle">
         <li>
-            <a href="{{ path('souscategorie_new') }}">Create a new sousCategorie</a>
+            <a class="btn btn-lg btn-primary btn-block" href="{{ path('souscategorie_new') }}">Ajouter un nouveau sous-titre</a>
         </li>
     </ul>
     

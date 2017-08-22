@@ -16,6 +16,18 @@
                 <th>Id</th>
                 <td>{{ detailLivre.id }}</td>
             </tr>
+            {% if detailLivre.categorie %}
+            <tr>
+                <th>Titre du sommaire</th>
+                <td>{{ detailLivre.categorie.titre }}</td>
+            </tr>
+            {% endif %}
+            {% if detailLivre.sousCategorie %}
+            <tr>
+                <th>Sous-Titre du sommaire</th>
+                <td>{{ detailLivre.sousCategorie.titre }}</td>
+            </tr>
+            {% endif %}
             <tr>
                 <th>Contenu</th>
                 <td>{{ detailLivre.contenu }}</td>
@@ -23,16 +35,16 @@
         </tbody>
     </table>
 
-    <ul>
+    <ul class="t2v_adminbundle">
         <li>
-            <a href="{{ path('detaillivre_index') }}">Back to the list</a>
+            <a class="btn btn-lg btn-info btn-block" href="{{ path('detaillivre_index') }}">Revenir à la liste</a>
         </li>
         <li>
-            <a href="{{ path('detaillivre_edit', { 'id': detailLivre.id }) }}">Edit</a>
+            <a class="btn btn-lg btn-primary btn-block" href="{{ path('detaillivre_edit', { 'id': detailLivre.id }) }}">Modifier</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input class="btn btn-lg btn-danger btn-block" type="submit" value="Supprimer">
             {{ form_end(delete_form) }}
         </li>
     </ul>

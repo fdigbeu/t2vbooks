@@ -20,19 +20,23 @@
                 <th>Titre</th>
                 <td>{{ sousCategorie.titre }}</td>
             </tr>
+            <tr>
+                <th>Numero</th>
+                <td>{{ sousCategorie.numero }}</td>
+            </tr>
         </tbody>
     </table>
 
-    <ul>
+    <ul class="t2v_adminbundle">
         <li>
-            <a href="{{ path('souscategorie_index') }}">Back to the list</a>
+            <a class="btn btn-lg btn-info btn-block" href="{{ path('souscategorie_index') }}">Revenir à la liste</a>
         </li>
         <li>
-            <a href="{{ path('souscategorie_edit', { 'id': sousCategorie.id }) }}">Edit</a>
+            <a class="btn btn-lg btn-primary btn-block" href="{{ path('souscategorie_edit', { 'id': sousCategorie.id }) }}">Modifier</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input class="btn btn-lg btn-danger btn-block" type="submit" value="Supprimer">
             {{ form_end(delete_form) }}
         </li>
     </ul>

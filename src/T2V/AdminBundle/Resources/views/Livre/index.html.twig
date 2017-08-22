@@ -10,10 +10,9 @@
     	<h3 class="text-center">Afficher tous les titres de livres</h3>
     </div>
 
-    <table>
+    <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Titre</th>
                 <th>Actions</th>
             </tr>
@@ -21,26 +20,19 @@
         <tbody>
         {% for livre in livres %}
             <tr>
-                <td><a href="{{ path('livre_show', { 'id': livre.id }) }}">{{ livre.id }}</a></td>
                 <td>{{ livre.titre }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('livre_show', { 'id': livre.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('livre_edit', { 'id': livre.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                	<a class="btn btn-info btn-xs" href="{{ path('livre_show', { 'id': livre.id }) }}">Afficher</a>
+                    <a class="btn btn-primary btn-xs" href="{{ path('livre_edit', { 'id': livre.id }) }}">Modifier</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
+    <ul class="t2v_adminbundle">
         <li>
-            <a href="{{ path('livre_new') }}">Create a new livre</a>
+            <a class="btn btn-lg btn-primary btn-block" href="{{ path('livre_new') }}">Ajouter un nouveau titre de livre</a>
         </li>
     </ul>
     
