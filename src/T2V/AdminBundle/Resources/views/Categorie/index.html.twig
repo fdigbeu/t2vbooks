@@ -10,39 +10,33 @@
     	<h3 class="text-center">Afficher tous les titres</h3>
     </div>
 
-    <table>
+    <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Numero</th>
+                <th>Titre du livre</th>
+                <th>Numéro</th>
+                <th>Titre du sommaire</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for categorie in categories %}
             <tr>
-                <td><a href="{{ path('categorie_show', { 'id': categorie.id }) }}">{{ categorie.id }}</a></td>
-                <td>{{ categorie.titre }}</td>
+                <td>{{ categorie.livre.titre }}</td>
                 <td>{{ categorie.numero }}</td>
+                <td>{{ categorie.titre }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('categorie_show', { 'id': categorie.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('categorie_edit', { 'id': categorie.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <a class="btn btn-info btn-xs" href="{{ path('categorie_show', { 'id': categorie.id }) }}">Afficher</a>
+                    <a class="btn btn-primary btn-xs" href="{{ path('categorie_edit', { 'id': categorie.id }) }}">Modifier</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
+    <ul class="t2v_adminbundle">
         <li>
-            <a href="{{ path('categorie_new') }}">Create a new categorie</a>
+            <a class="btn btn-lg btn-primary btn-block" href="{{ path('categorie_new') }}">Ajouter un nouveau titre</a>
         </li>
     </ul>
     

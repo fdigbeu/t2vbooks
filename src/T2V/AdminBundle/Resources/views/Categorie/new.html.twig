@@ -10,14 +10,14 @@
     	<h3 class="text-center">Ajouter un nouveau titre</h3>
     </div>
 
-    {{ form_start(form) }}
+    {{ form_start(form, {'attr': { 'class': 't2v_adminbundle' }}) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input class="btn btn-lg btn-primary btn-block" type="submit" value="Enregistrer" />
     {{ form_end(form) }}
 
-    <ul>
+    <ul class="t2v_adminbundle">
         <li>
-            <a href="{{ path('categorie_index') }}">Back to the list</a>
+            <a class="btn btn-lg btn-info btn-block" href="{{ path('categorie_index') }}">Revenir à la liste</a>
         </li>
     </ul>
     

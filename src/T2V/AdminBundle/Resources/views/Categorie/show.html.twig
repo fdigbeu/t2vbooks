@@ -17,7 +17,11 @@
                 <td>{{ categorie.id }}</td>
             </tr>
             <tr>
-                <th>Titre</th>
+                <th>Titre du livre</th>
+                <td>{{ categorie.livre.titre }}</td>
+            </tr>
+            <tr>
+                <th>Titre du sommaire</th>
                 <td>{{ categorie.titre }}</td>
             </tr>
             <tr>
@@ -27,16 +31,16 @@
         </tbody>
     </table>
 
-    <ul>
+    <ul class="t2v_adminbundle">
         <li>
-            <a href="{{ path('categorie_index') }}">Back to the list</a>
+            <a class="btn btn-lg btn-info btn-block" href="{{ path('categorie_index') }}">Revenir à la liste</a>
         </li>
         <li>
-            <a href="{{ path('categorie_edit', { 'id': categorie.id }) }}">Edit</a>
+            <a class="btn btn-lg btn-primary btn-block" href="{{ path('categorie_edit', { 'id': categorie.id }) }}">Modifier</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input class="btn btn-lg btn-danger btn-block" type="submit" value="Supprimer">
             {{ form_end(delete_form) }}
         </li>
     </ul>
