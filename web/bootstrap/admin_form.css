@@ -4,18 +4,43 @@
 	text-align: center;
 }
 
-.fos_user_profile_edit, .fos_user_change_password, .fos_user_resetting_request {
+.fos_user_profile_edit, .fos_user_change_password, .fos_user_resetting_request, .t2v_adminbundle {
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
 }
 
-.fos_user_profile_edit label, .fos_user_change_password label, .fos_user_resetting_request label{
+table{
+  max-width: 95%;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+table th, table td{
+	padding: 5px;
+}
+
+table.table th, table.table td{
+	text-align: center;
+}
+
+table.table tr:hover{
+	background: #DDDDDD;
+}
+
+table ul li{
+	padding: 5px;
+}
+
+.fos_user_profile_edit label, .fos_user_change_password label, .fos_user_resetting_request label, .t2v_adminbundle label{
 	display: block;
 	text-align: center;
 }
 
-.fos_user_profile_edit .form-control, .fos_user_change_password .form-control, .fos_user_resetting_request .form-control{
+.fos_user_profile_edit .form-control, 
+.fos_user_change_password .form-control, 
+.fos_user_resetting_request .form-control,
+.t2v_adminbundle  .form-control{
   position: relative;
   height: auto;
   -webkit-box-sizing: border-box;
@@ -24,6 +49,12 @@
   padding: 10px;
   font-size: 16px;
 }
+
+.t2v_adminbundle input[type="email"], 
+.t2v_adminbundle input[type="password"], 
+.t2v_adminbundle input[type="text"],
+.t2v_adminbundle select,
+.t2v_adminbundle textarea,
 
 .fos_user_profile_edit input[type="email"], 
 .fos_user_profile_edit input[type="password"], 
@@ -53,6 +84,12 @@
 	display: block;
 	color: #D9534F;
 	text-align: center;
+}
+
+ ul.t2v_adminbundle li {
+	display: block;
+	text-align: center;
+	padding: 5px;
 }
 
 div p{
