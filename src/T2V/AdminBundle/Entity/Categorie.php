@@ -33,7 +33,7 @@ class Categorie
     /**
      * @var string
      *
-     * @ORM\Column(name="numero", type="string", length=5, nullable=true)
+     * @ORM\Column(name="numero", type="string", length=10, nullable=true)
      */
     private $numero;
 

@@ -29,6 +29,13 @@ class SousCategorie
      * @ORM\Column(name="titre", type="string", length=510)
      */
     private $titre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numero", type="string", length=10, nullable=true)
+     */
+    private $numero;
     
     /**
      * @ORM\OneToMany(targetEntity="T2V\AdminBundle\Entity\DetailLivre", mappedBy="souscategorie")
@@ -137,5 +144,29 @@ class SousCategorie
     public function getCategorie()
     {
         return $this->categorie;
+    }
+
+    /**
+     * Set numero
+     *
+     * @param string $numero
+     *
+     * @return SousCategorie
+     */
+    public function setNumero($numero)
+    {
+        $this->numero = $numero;
+
+        return $this;
+    }
+
+    /**
+     * Get numero
+     *
+     * @return string
+     */
+    public function getNumero()
+    {
+        return $this->numero;
     }
 }
