@@ -6,6 +6,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+
 class DetailLivreType extends AbstractType
 {
     /**
@@ -13,7 +16,10 @@ class DetailLivreType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('contenu')->add('categorie')->add('souscategorie');
+        $builder
+        ->add('categorie', EntityType::class, array('label' => 'Titre du sommaire', 'class' => 'T2V\AdminBundle\Entity\Categorie', 'choice_label' => 'titre', 'required' => false))
+        ->add('souscategorie', EntityType::class, array('label' => 'Sous-Titre du sommaire', 'class' => 'T2V\AdminBundle\Entity\SousCategorie', 'choice_label' => 'titre', 'required' => false))
+        ->add('contenu', TextareaType::class, array('label' => 'Détail du contenu'));
     }
     
     /**
