@@ -1,0 +1,19 @@
+webservice_sommaire_formate:
+    path:     /sommaire/formate
+    defaults: { _controller: "T2VAdminBundle:WebService:sommaireFormate" }
+    methods:  GET
+
+webservice_contenu_formate:
+    path:     /contenu/formate
+    defaults: { _controller: "T2VAdminBundle:WebService:contenuFormate" }
+    methods:  GET
+
+webservice_sommaire_json:
+    path:     /sommaire/json
+    defaults: { _controller: "T2VAdminBundle:WebService:sommaireJson" }
+    methods:  GET
+
+webservice_contenu_json:
+    path:     /contenu/json
+    defaults: { _controller: "T2VAdminBundle:WebService:contenuJson" }
+    methods:  GET

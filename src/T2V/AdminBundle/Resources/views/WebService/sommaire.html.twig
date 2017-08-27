@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<div>{{ render(controller('T2VAdminBundle:Menu:index', {'active': app.request.get('_route')})) }}</div>
+	
+	<div class="container">
+
+    <div class="page-header">
+    	<h3 class="text-center">Sommaire formaté</h3>
+    </div>
+
+	{% if sommaires %}
+		{{ dump(sommaires) }}
+	{% endif %}
+    
+    </div>
+{% endblock %}
+
+
+

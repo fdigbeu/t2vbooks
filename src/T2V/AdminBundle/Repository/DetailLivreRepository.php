@@ -10,4 +10,114 @@ namespace T2V\AdminBundle\Repository;
  */
 class DetailLivreRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function getSommaire()
+	{
+		$query = $this->createQueryBuilder('d')
+		->select('d')
+		->leftJoin('d.categorie', 'c')
+		->addSelect('c')
+		->leftJoin('d.souscategorie', 's')
+		->addSelect('s')
+		->orderBy('d.id', 'ASC');
+		//--
+		$detailLivres = $query->getQuery()->getResult();
+		//--
+		$resultatTmp = array();
+		$resultat = array();
+		$titreSommaire = array();
+		$sousTitreSommaire = array();
+		$titreNumero = array();
+		//--
+		foreach ($detailLivres as $detail){
+			if($detail->getCategorie() && $detail->getCategorie()->getTitre()){
+				$lbNumero = trim($detail->getCategorie()->getNumero());
+				$lbTitreSommaire = trim($detail->getCategorie()->getTitre());
+				//--
+				if(!isset($titreSommaire[$lbTitreSommaire])){
+					$titreSommaire[$lbTitreSommaire] = "OK";
+					$resultatTmp[$lbTitreSommaire] = array();
+					if($lbNumero){
+						$titreNumero[$lbTitreSommaire] = $lbNumero;
+					}
+				}
+				//--
+				if($detail->getSousCategorie() && $detail->getSousCategorie()->getTitre()){
+					$lbSousTitreSommaire = trim($detail->getSousCategorie()->getTitre());
+					$lbSousTitreNumero = trim($detail->getSousCategorie()->getNumero());
+					if(!isset($sousTitreSommaire[$lbTitreSommaire][$lbSousTitreSommaire])){
+						$sousTitreSommaire[$lbTitreSommaire][$lbSousTitreSommaire] = "OK";
+						$resultatTmp[$lbTitreSommaire][] = array(
+								"sousTitreKeyCode" => substr(hash("sha256", $lbSousTitreSommaire), 0, 10), 
+								"sousTitreValue" => str_ireplace("’", "'", $lbSousTitreSommaire) ,
+								"sousTitreNumero" => $lbSousTitreNumero
+						);
+					}
+				}
+			}
+		}
+		//--
+		foreach ($resultatTmp as $key => $value){
+			$resultat[]=array(
+					"titre" => $key, 
+					"titreNumero" => isset($titreNumero[$key]) ? $titreNumero[$key] : "",
+					"titreKeycode" => substr(hash("sha256", $key), 0, 10), 
+					"soustitre" => str_ireplace("’", "'", $value)
+			);
+		}
+		//--
+		return $resultat;
+	}
+	
+	public function getContenuSommaire()
+	{
+		$query = $this->createQueryBuilder('d')
+		->select('d')
+		->leftJoin('d.categorie', 'c')
+		->addSelect('c')
+		->leftJoin('d.souscategorie', 's')
+		->addSelect('s')
+		->orderBy('d.id', 'ASC');
+		//--
+		$detailLivres = $query->getQuery()->getResult();
+		//--
+		foreach ($detailLivres as $detail){
+			if($detail->getCategorie() && $detail->getCategorie()->getTitre()){
+				$lbTitreSommaire = trim($detail->getCategorie()->getTitre());
+				if($detail->getSousCategorie() && $detail->getSousCategorie()->getTitre()){
+					$lbSousTitreSommaire = trim($detail->getSousCategorie()->getTitre());
+					if($detail->getContenu()){
+						$keyCode = substr(hash("sha256", $lbTitreSommaire), 0, 10)."_".substr(hash("sha256", $lbSousTitreSommaire), 0, 10);
+						$contenuTitreTmp[$lbTitreSommaire][$keyCode][] = str_ireplace("’", "'", trim($detail->getContenu()));
+					}
+				}
+				else{
+					if($detail->getContenu()){
+						$contenuTitreTmp[$lbTitreSommaire][] = str_ireplace("’", "'", trim($detail->getContenu()));
+					}
+				}
+			}
+		}
+		//--
+		foreach ($contenuTitreTmp as $key => $value){
+			$contenuTitre[] = array(
+					"titre" => $key,
+					"titreKeycode" => substr(hash("sha256", $key), 0, 10),
+					"contenu" => str_ireplace("’", "'", $value)
+			);
+		}
+		//--
+		return $contenuTitre;
+	}
+	
+	public function getJsonContenuSommaire()
+	{
+		$resultat = $this->getContenuSommaire();
+		return json_encode($resultat);
+	}
+	
+	public function getJsonSommaire()
+	{
+		$resultat = $this->getSommaire();
+		return json_encode($resultat);
+	}
 }

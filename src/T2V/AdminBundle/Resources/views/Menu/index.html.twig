@@ -31,6 +31,15 @@
                       <li class="{% if active == 'detaillivre_new' %}active{% endif %}"><a href="{{ path('detaillivre_new') }}">Ajouter un nouveau contenu</a></li>
                     </ul>
                   </li>
+                  <li class="dropdown {% if active starts with 'webservice_' %}active{% endif %}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">JSON <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li class="{% if active == 'webservice_sommaire_formate' %}active{% endif %}"><a href="{{ path('webservice_sommaire_formate') }}">Sommaire formaté</a></li>
+                      <li class="{% if active == 'webservice_contenu_formate' %}active{% endif %}"><a href="{{ path('webservice_contenu_formate') }}">Contenu formaté</a></li>
+                      <li class="{% if active == 'webservice_sommaire_json' %}active{% endif %}"><a target="_blank" href="{{ path('webservice_sommaire_json') }}">Sommaire JSON</a></li>
+                      <li class="{% if active == 'webservice_contenu_json' %}active{% endif %}"><a target="_blank" href="{{ path('webservice_contenu_json') }}">Contenu JSON</a></li>
+                    </ul>
+                  </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                   <li class="dropdown {% if active starts with 'fos_user_' %}active{% endif %}">

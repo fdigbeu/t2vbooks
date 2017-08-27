@@ -14,6 +14,10 @@ t2_v_admin_souscategorie:
     resource: "@T2VAdminBundle/Resources/config/routing/souscategorie.yml"
     prefix:   /souscategorie
 
+t2_v_admin_webservice:
+    resource: "@T2VAdminBundle/Resources/config/routing/webservice.yml"
+    prefix:   /webservice
+
 t2_v_admin_homepage:
     path:     /
     defaults: { _controller: T2VAdminBundle:Default:index }
