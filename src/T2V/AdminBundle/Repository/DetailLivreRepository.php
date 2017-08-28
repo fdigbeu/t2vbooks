@@ -80,9 +80,11 @@ class DetailLivreRepository extends \Doctrine\ORM\EntityRepository
 		//--
 		$detailLivres = $query->getQuery()->getResult();
 		//--
+		$listNumber = array();
 		foreach ($detailLivres as $detail){
 			if($detail->getCategorie() && $detail->getCategorie()->getTitre()){
 				$lbTitreSommaire = trim($detail->getCategorie()->getTitre());
+				$listNumber[$lbTitreSommaire] = $detail->getCategorie()->getNumero();
 				if($detail->getSousCategorie() && $detail->getSousCategorie()->getTitre()){
 					$lbSousTitreSommaire = trim($detail->getSousCategorie()->getTitre());
 					if($detail->getContenu()){
@@ -101,6 +103,7 @@ class DetailLivreRepository extends \Doctrine\ORM\EntityRepository
 		foreach ($contenuTitreTmp as $key => $value){
 			$contenuTitre[] = array(
 					"titre" => $key,
+					"titreNumero" => isset($listNumber[$key]) ? $listNumber[$key] : "",
 					"titreKeycode" => substr(hash("sha256", $key), 0, 10),
 					"contenu" => str_ireplace("’", "'", $value)
 			);
