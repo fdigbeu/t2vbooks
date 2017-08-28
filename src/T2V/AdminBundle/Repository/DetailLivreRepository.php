@@ -10,6 +10,7 @@ namespace T2V\AdminBundle\Repository;
  */
 class DetailLivreRepository extends \Doctrine\ORM\EntityRepository
 {
+	// Détail du sommaire
 	public function getSommaire()
 	{
 		$query = $this->createQueryBuilder('d')
@@ -68,6 +69,7 @@ class DetailLivreRepository extends \Doctrine\ORM\EntityRepository
 		return $resultat;
 	}
 	
+	// Contenu du livre
 	public function getContenuSommaire()
 	{
 		$query = $this->createQueryBuilder('d')
