@@ -47,7 +47,7 @@ class DetailLivreRepository extends \Doctrine\ORM\EntityRepository
 					if(!isset($sousTitreSommaire[$lbTitreSommaire][$lbSousTitreSommaire])){
 						$sousTitreSommaire[$lbTitreSommaire][$lbSousTitreSommaire] = "OK";
 						$resultatTmp[$lbTitreSommaire][] = array(
-								"sousTitreKeyCode" => substr(hash("sha256", $lbSousTitreSommaire), 0, 10), 
+								"sousTitreKeyCode" => substr(hash("sha256", $lbTitreSommaire), 0, 10)."_".substr(hash("sha256", $lbSousTitreSommaire), 0, 10), 
 								"sousTitreValue" => str_ireplace("’", "'", $lbSousTitreSommaire) ,
 								"sousTitreNumero" => $lbSousTitreNumero
 						);
