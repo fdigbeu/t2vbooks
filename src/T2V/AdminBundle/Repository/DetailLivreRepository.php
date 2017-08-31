@@ -82,36 +82,30 @@ class DetailLivreRepository extends \Doctrine\ORM\EntityRepository
 		//--
 		$detailLivres = $query->getQuery()->getResult();
 		//--
-		$listNumber = array();
+		$resultatTmp = array();
+		$resultat = array();
 		foreach ($detailLivres as $detail){
-			if($detail->getCategorie() && $detail->getCategorie()->getTitre()){
-				$lbTitreSommaire = trim($detail->getCategorie()->getTitre());
-				$listNumber[$lbTitreSommaire] = $detail->getCategorie()->getNumero();
-				if($detail->getSousCategorie() && $detail->getSousCategorie()->getTitre()){
-					$lbSousTitreSommaire = trim($detail->getSousCategorie()->getTitre());
-					if($detail->getContenu()){
-						$keyCode = substr(hash("sha256", $lbTitreSommaire), 0, 10)."_".substr(hash("sha256", $lbSousTitreSommaire), 0, 10);
-						$contenuTitreTmp[$lbTitreSommaire][$keyCode][] = str_ireplace("’", "'", trim($detail->getContenu()));
-					}
-				}
-				else{
-					if($detail->getContenu()){
-						$contenuTitreTmp[$lbTitreSommaire][] = str_ireplace("’", "'", trim($detail->getContenu()));
-					}
-				}
+			// If subTitle exists
+			$labelKey = "";
+			$labelContent = $detail->getContenu() ? $detail->getContenu() : "";
+			if($detail->getSousCategorie() && $detail->getSousCategorie()->getTitre()){
+				$labelKey = substr(hash("sha256", $detail->getCategorie()->getTitre()), 0, 10)."_".substr(hash("sha256", $detail->getSousCategorie()->getTitre()), 0, 10);
 			}
+			elseif ($detail->getCategorie() && $detail->getCategorie()->getTitre()){
+				$labelKey = substr(hash("sha256", $detail->getCategorie()->getTitre()), 0, 10);
+			}
+			//--
+			$resultatTmp[$labelKey][] = str_ireplace("’", "'", $labelContent);
 		}
 		//--
-		foreach ($contenuTitreTmp as $key => $value){
-			$contenuTitre[] = array(
-					"titre" => $key,
-					"titreNumero" => isset($listNumber[$key]) ? $listNumber[$key] : "",
-					"titreKeycode" => substr(hash("sha256", $key), 0, 10),
-					"contenu" => str_ireplace("’", "'", $value)
+		foreach ($resultatTmp as $key => $value){
+			$resultat[]=array(
+				"keycode" => $key, 
+				"contenu" => $value
 			);
 		}
 		//--
-		return $contenuTitre;
+		return $resultat;
 	}
 	
 	public function getJsonContenuSommaire()
